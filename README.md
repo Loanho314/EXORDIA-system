@@ -1,6 +1,16 @@
 # EXORDIA-system
 An Explanation of Reasoning through Dialogical Argumentation (EXORDIA) system using argumentation-based explanations to help experimenters better understand reasoning results. The tool also allows experimenters to easily explore different argumentative explanations for selected hypotheses of a given query answer.
 
+# Supplementary material
+All materials that we use in a user study can be found in the MATERIAL folder. This includes:
+- Guidelines explaining teriminologies used in the EXORDIA system.
+- Videos show how participants use the EXORDIA system.
+- Data was used in tasks.
+- Task questionnaire file and a document of answers for the task questionnaire.
+- Post-study questionnaires.
+- Excel file of results
+- SPPS file shows the results of the user study.
+
 # Requirements
 - This is a Java implementation: Full java 21 support, java 21 is a requirement.
 - Graphviz 13.0.1
@@ -27,13 +37,5 @@ The code has been made available for reproducing the results we show in our pape
       mvn clean install
 
   
-# Supplementary material
-All materials that we use in a user study can be found in the MATERIAL folder. This includes:
-- Guidelines explaining teriminologies used in the EXORDIA system.
-- Videos show how participants use the EXORDIA system.
-- Data was used in tasks.
-- Task questionnaire file and a document of answers for the task questionnaire.
-- Post-study questionnaires.
-- Excel file of results
-- SPPS file shows the results of the user study.
+
   
