@@ -13,20 +13,27 @@ An Explanation of Reasoning through Dialogical Argumentation (EXORDIA) system us
 - Or download the owl2dlgp tool to use:
 Link: https://graphik-team.github.io/graal/downloads/owl2dlgp
 
-# Datasets
-You can download datasets from the links below:
-
-      Zenodo doi: 10.5281/zenodo.15379835. (2025) https://doi.org/10.5281/zenodo.15379836
-
 # Useage
-The code has been made available for reproducing the results we show in our paper. To make sure that it is possible we would refer to the CODE folder.
-Though the code is still in active development, it is possible that the system will improve.
+The code has been made available for reproducing the results we show in our paper. To make sure that it is possible we would refer to the CODE folder. There are two options:
 
-Perform the following steps:
-- To use, create a location where you store the DLGP. You can store datasets in the created folder, i.e., the "data" folder.
+1. Option1: Double-click on EXORDIA.jar to run the tool.
+
+2. Option 2: Perform the following steps:
+- To use, create a location where you store the DLGP. You can store datasets anywhere.
 - Clone a repository to your local computer using a Github link.
 - Go to the directory where your source code is, i.e., .\SAF-Argumentation\code
 - Package the project by using the following command:
   
       mvn clean install
+
+  
+# Supplementary material
+All materials that we use in a user study can be found in the MATERIAL folder. This includes:
+- Guidelines explaining teriminologies used in the EXORDIA system.
+- Videos show how participants use the EXORDIA system.
+- Data was used in tasks.
+- Task questionnaire file and a document of answers for the task questionnaire.
+- Post-study questionnaires.
+- Excel file of results
+- SPPS file shows the results of the user study.
   
