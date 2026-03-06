@@ -1,0 +1,40 @@
+@constraints
+! :- assistantProfessor(X0), fullProfessor(X0).
+%a person who is a full professor cannot be an assitant professor
+
+! :- postdoc(X0), assistantProfessor(X0).
+%a person who is an assitant professor cannot be a postdoc
+
+! :- postdoc(X0), fullProfessor(X0).
+%a person who is a full professor cannot be a postdoc
+
+! :- lecturer(X0), postdoc(X0).
+%a person who is a lecturer cannot be a postdoc
+
+@rules
+professor(X0) :- assistantProfessor(X0).
+%every assistant professor X0 is a professor
+
+professor(X0) :- fullProfessor(X0).
+%every full professor X0 is a professor
+
+phD(X0) :- professor(X0).
+%every professor X0 is a phD
+
+phD(X0) :- postdoc(X0).
+%every postdoc X0 is a phD
+
+@facts
+postdoc(a).
+%a is a postdoc
+
+assistantProfessor(a).
+%a is an assitant professor
+
+fullProfessor(a).
+%a is a full professor
+
+lecturer(a).
+%a is a lecturer
+
+

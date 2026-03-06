@@ -1,0 +1,85 @@
+@prefix ont:<http://dbpedia.org/ontology/>
+@prefix db:<http://dbpedia.org/resource/>
+
+@constraints
+! :- ont:Person(X0), ont:Building(X0).
+% A person cannot be a building
+
+! :- ont:Person(X0), ont:Event(X0).
+% A person cannot be an event
+
+! :- ont:Person(X0), ont:Place(X0).
+% A person cannot be a place
+
+! :- ont:Place(X0), ont:Agent(X0).
+% A place cannot be an agent
+
+! :- ont:Person(X0), ont:Agent(X0).
+
+! :- ont:SportsEvent(X0), ont:Convention(X0).
+% A sport event cannot be a convention
+
+! :- ont:SportsEvent(X0), ont:MilitaryConflict(X0).
+% A sport event cannot be a military conflict
+
+! :- ont:Election(X0), ont:Convention(X0).
+% An election cannot be a convention
+
+! :- ont:SportsEvent(X0), ont:Election(X0).
+% A sport event cannot be an election
+
+@rules
+ont:Agent(X0) :- ont:Organisation(X0).
+% every agent X0 is an organisation
+
+ont:Organisation(X0) :- ont:Broadcaster(X0).
+%ever organisation is a broadcaster
+
+ont:Place(X0) :- ont:ArchitecturalStructure(X0).
+% every place X0 is an architectural structure
+
+ont:ArchitecturalStructure(X0) :- ont:Building(X0).
+% every architectural structure X0 is a building
+
+ont:Person(X0) :- ont:Athlete(X0).
+% every person X0 is an athlete
+
+ont:Athlete(X0) :- ont:WinterSportPlayer(X0).
+% every winter sprot player X0 is an athlete
+
+ont:Event(X0) :- ont:SocietalEvent(X0).
+% every event X0 is a societal event
+
+ont:SocietalEvent(X0) :- ont:SportsEvent(X0).
+% every societal event X0 is a sports event
+
+ont:SocietalEvent(X0) :- ont:Convention(X0).
+% every societal event X0 is a convention
+
+ont:SocietalEvent(X0) :- ont:Election(X0).
+% every societal event X0 is an election
+
+@facts
+ont:SportsEvent(db:Bob_Sweeney_ice_hockey).
+% Bob_Sweeney_ice_hockey is a sport event
+
+ont:WinterSportPlayer(db:Bob_Sweeney_ice_hockey).
+% Bob_Sweeney_ice_hockey is a winter sprot player
+
+ont:Building(db:Bob_Sweeney_ice_hockey).
+% Bob_Sweeney_ice_hockey is a building
+
+ont:Broadcaster(db:Bob_Sweeney_ice_hockey).
+% Bob_Sweeney_ice_hockey is a broadcaster
+
+ont:Convention(db:Republic_of_Texas_Biker_Rally).
+% Republic_of_Texas_Biker_Rally is a convention
+
+ont:SportsEvent(db:Republic_of_Texas_Biker_Rally).
+%Republic_of_Texas_Biker_Rally is a sport event
+
+ont:Election(db:Republic_of_Texas_Biker_Rally).
+%Republic_of_Texas_Biker_Rally is an election
+
+ont:MilitaryConflict(db:Republic_of_Texas_Biker_Rally).
+%Republic_of_Texas_Biker_Rally is a military conflict

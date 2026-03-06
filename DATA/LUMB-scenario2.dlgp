@@ -1,0 +1,103 @@
+@prefix  uni: <http://swat.cse.lehigh.edu/onto/univ-bench.owl#/>
+@prefix de: <http://www.Department4.University0.edu/>
+ 
+@constraints
+! :- uni:lecturer(X0), uni:professor(X0).
+% a person who is a professor cannot be a lecturer
+
+! :- uni:fullProfessor(X0), uni:associateProfessor(X0).
+% a person who is a full professor cannot be an associate professor
+
+! :- uni:lecturer(X0), uni:associateProfessor(X0).
+% a person who is an associate professor cannot be a lecturer
+
+! :- uni:lecturer(X0), uni:fullProfessor(X0).
+% a person who is a full professor cannot be a lecturer
+
+! :- uni:associateProfessor(X0), uni:PostDoc(X0).
+% a person who is an associate professor cannot be a postdoc
+
+! :- uni:fullProfessor(X0), uni:PostDoc(X0).
+% a person who is a full professor cannot be a postdoc
+
+! :- uni:Director(X0), uni:lecturer(X0).
+% a person who is a director cannot be a lecturer
+
+! :- uni:Director(X0), uni:PostDoc(X0).
+% a person who is a director cannot be a postdoc
+
+! :- uni:GraduateStudent(X0), uni:Reseacher(X0).
+% a person who is a graduate student cannot be a reseacher
+
+! :- uni:Director(X0), uni:GraduateStudent(X0).
+% a person who is a director cannot be a graduate student
+
+! :- uni:PostDoc(X0), uni:GraduateStudent(X0).
+% a person who is a postdoc cannot be a graduate student
+
+@rules
+uni:professor(X0) :- uni:fullProfessor(X0).
+% every full professor X0 is a professor
+
+uni:professor(X0) :- uni:associateProfessor(X0).
+% every associate professor X0 is a professor
+
+uni:faculty(X0) :- uni:PostDoc(X0).
+
+uni:faculty(X0) :- uni:lecturer(X0).
+% every lecturer X0 is a member of a faculty
+
+uni:faculty(X0) :- uni:professor(X0).
+% every professor X0 is a member of a faculty
+
+uni:employee(X0) :- uni:faculty(X0).
+% every member of a faculty X0 is an employee
+
+uni:lecturer(X0) :-  uni:teacherOf(X0, X3).
+% every person X0 who is a teacher of a course X3 is a lecturer
+
+uni:fullProfessor(X0) :- uni:subj14Professor(X0).
+% every subj14Professor X0 is a full professor
+
+uni:professor(X0) :- uni:advisor(X3, X0).
+% every advisor X3 who suppervises a student X0 is a professor
+
+uni:employee(X0) :- uni:Director(X0).
+%every director X0 is an empployee
+
+uni:employee(X0) :- uni:PostDoc(X0).
+%every postdoc X0 is an empployee
+
+uni:Director(X0) :- uni:Subj16Professor(X0).
+%every Subj16Professor X0 is a director
+
+uni:GraduateStudent(X0) :- uni:Subj12Professor(X0).
+%every Subj12Professor X0 is a graduate student
+
+@facts
+uni:Reseacher(de:associateProfessor5).
+% associateProfessor5 is a reseacher
+
+uni:PostDoc(de:associateProfessor5).
+% associateProfessor5 is a postdoc
+
+uni:Subj12Professor(de:associateProfessor5).
+% associateProfessor5 is a Subj12Professor
+
+uni:subj14Professor(de:associateProfessor5).
+% associateProfessor5 is a subj14Professor
+
+uni:Subj16Professor(de:associateProfessor5).
+% associateProfessor5 is a Subj16Professor
+
+uni:associateProfessor(de:associateProfessor5).
+% associateProfessor5 is an associate professor
+
+uni:advisor(de:graduateStudent91,de:associateProfessor5).
+% associateProfessor5 is an advisor of a student graduateStudent91
+
+uni:worksFor(de:associateProfessor5,de:university0).
+% associateProfessor5 works for university0
+
+uni:teacherOf(de:associateProfessor5,course22).
+% associateProfessor5 is a teacher of the course course22
