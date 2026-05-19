@@ -35,6 +35,44 @@
 ! :- uni:PostDoc(X0), uni:GraduateStudent(X0).
 % a person who is a postdoc cannot be a graduate student
 
+! :- uni:teachingAssistantOf(X0,X1), uni:tenured(X0,X1).
+% X0 is a teaching assistant of X1 cannot be tenured by X1
+
+! :- uni:Director(X0), uni:student(X0).
+% a person who is a director cannot be a student
+
+! :- uni:Director(X0), uni:student(X0).
+% a person who is a director cannot be a student
+
+! :- uni:Course(X0), uni:ExamRecord(X0).
+% X0 is a course that cannot be a examrecord
+
+! :- uni:Exam(X0), uni:ExamRecord(X0).
+% a person who is a director cannot be a student
+
+! :- uni:Work(X0), uni:Publication(X0).
+% a person who is a director cannot be a student
+
+! :- uni:TechnicalReport(X0), uni:JournalPaper(X0).
+% a person who is a director cannot be a student
+
+! :- uni:Deparment(X0), uni:Faculty(X0).
+% X0 is a department that cannot be a faculty
+
+! :- uni:Schedule(X0), uni:Person(X0).
+% X0 is a schedule that cannot be a person
+
+! :- uni:researchProject(X0,X1), uni:advisor(X0,X1).
+% X0 is a research Project of X1 cannot be an advisor of X1
+
+! :- uni:teachingAssistantOf(X0,X1), uni:hasAlumnus(X0,X1).
+% X0 is a teaching assistant of X1 can not be alumnus at X1
+
+! :- uni:teachingAssistantOf(X0,X1), uni:publicationAuthor(X0,X1).
+
+! :- uni:hasAlumnus(X0,X1), uni:memberOf(X0,X1).
+% X0 has alumnus X1 that cannotbe member of X1
+
 @rules
 uni:professor(X0) :- uni:fullProfessor(X0).
 % every full professor X0 is a professor
@@ -74,6 +112,27 @@ uni:Director(X0) :- uni:Subj16Professor(X0).
 uni:GraduateStudent(X0) :- uni:Subj12Professor(X0).
 %every Subj12Professor X0 is a graduate student
 
+uni:Course(X0) :- uni:takesCourese(X3,X0).
+%X3 takes X0 that is a course
+
+uni:Faculty(X0) :- uni:hasFaculty(X3,X0).
+%X3 has X0 that is a faculty
+
+uni:Course(X0) :- uni:teacherOf(X3,X0).
+%X3 is a teacher of X0 that is a course
+
+uni:Course(X0) :- uni:listedCourse(X3,X0).
+%X3 lists X0 that is a course
+
+uni:University(X0) :- uni:doctoralDegreeFrom(X3,X0).
+%X3 has doctoral degree from X0 that is a university
+
+uni:University(X0) :- uni:hasAlumnus(X3,X0).
+%X3 has alumnus from X0 that is a university
+
+uni:Employee(X0) :- uni:worksFor(X3,X0).
+%X3 works X0 that is a university
+
 @facts
 uni:Reseacher(de:associateProfessor5).
 % associateProfessor5 is a reseacher
@@ -100,4 +159,7 @@ uni:worksFor(de:associateProfessor5,de:university0).
 % associateProfessor5 works for university0
 
 uni:teacherOf(de:associateProfessor5,course22).
+% associateProfessor5 is a teacher of the course course22
+
+uni:hasAlumnus(de:associateProfessor5,de:university0).
 % associateProfessor5 is a teacher of the course course22
